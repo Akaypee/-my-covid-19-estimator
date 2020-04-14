@@ -7,6 +7,8 @@ def estimator(data):
     factor = no_of_days / 3
 
     reported_cases = data["reportedCases"]
+    # population = data["population"]
+    total_hospital_beds = data["totalHospitalBeds"]
 
     currently_infected_best_case = reported_cases * 10
     infections_by_request_time_best_case = \
@@ -17,7 +19,7 @@ def estimator(data):
         currently_infected_worst_case * (2 ** factor)
 
     # Challenge One Ends
-
+    
     # Challenge Two Starts
     severe_cases_by_requested_time_best_case = \
         infections_by_request_time_best_case * 15 / 100
