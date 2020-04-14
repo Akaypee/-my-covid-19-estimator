@@ -62,24 +62,26 @@ def estimator(data):
     final_data = {
         "data": data,
         "impact": {
-            "currentlyInfected": currently_infected_best_case,
-            "infectionsByRequestedTime": infections_by_request_time_best_case,
-            "hospitalBedByRequestedTime": hospital_bed_by_requested_time_best_case,
+            "currentlyInfected": currently_infected_best_case, # Challenge 1
+            "infectionsByRequestTime": infections_by_request_time_best_case, # Challenge 1
+            "severeCasesByRequestedTime": severe_cases_by_requested_time_best_case, # Challenge 2
+            "hospitalBedsByRequestedTime": hospital_bed_by_requested_time_best_case, # Challenge 2
             "casesForICUByRequestedTime":
-                cases_for_icu_by_requested_time_best_case,
+                cases_for_icu_by_requested_time_best_case, # Challenge 3
             "casesForVentilatorsByRequestedTime":
-                cases_for_ventilators_by_requested_time_best_case,
-            "dollarsInFlight": dollars_in_flight_best_case,
+                cases_for_ventilators_by_requested_time_best_case, # Challenge 3
+            "dollarsInFlight": dollars_in_flight_best_case, # Challenge 3
         },
         "severeImpact": {
-            "currentlyInfected": currently_infected_worst_case,
-            "infectionsByRequestedTime": infections_by_request_time_worst_case,
-            "hospitalBedByRequestedTime": hospital_bed_by_requested_time_worst_case,
+            "currentlyInfected": currently_infected_worst_case, # Challenge 1
+            "infectionsByRequestTime": infections_by_request_time_worst_case, # Challenge 1
+            "severeCasesByRequestedTime": severe_cases_by_requested_time_worst_case, # Challenge 2
+            "hospitalBedsByRequestedTime": hospital_bed_by_requested_time_worst_case, # Challenge 2
             "casesForICUByRequestedTime":
-                cases_for_icu_by_requested_time_worst_case,
+                cases_for_icu_by_requested_time_worst_case, # Challenge 3
             "casesForVentilatorsByRequestedTime":
-                cases_for_ventilators_by_requested_time_worst_case,
-            "dollarsInFlight": dollars_in_flight_worst_case,
+                cases_for_ventilators_by_requested_time_worst_case, # Challenge 3
+            "dollarsInFlight": dollars_in_flight_worst_case, # Challenge 3
         },
     }
 
