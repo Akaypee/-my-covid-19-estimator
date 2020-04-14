@@ -18,16 +18,37 @@ def estimator(data):
 
     # Challenge One Ends
 
+    # Challenge Two Starts
+    severe_cases_by_requested_time_best_case = \
+        infections_by_request_time_best_case * 15 / 100
+    available_hospital_space_best_case = \
+        total_hospital_beds * 35 / 100  # 35% of total available spaces in hospitals
+    hospital_bed_by_requested_time_best_case = \
+        available_hospital_space_best_case - \
+        severe_cases_by_requested_time_best_case
+
+    severe_cases_by_requested_time_worst_case = \
+        infections_by_request_time_worst_case * 15 / 100
+    available_hospital_space_worst_case = \
+        total_hospital_beds * 35 / 100  # 35% of total available spaces in hospitals
+    hospital_bed_by_requested_time_worst_case = \
+        available_hospital_space_worst_case - \
+        severe_cases_by_requested_time_worst_case
+    # Challenge Two Ends
+    
+    
     # Estimation result
     final_data = {
         "data": data,
         "impact": {
             "currentlyInfected": currently_infected_best_case,
             "infectionsByRequestedTime": infections_by_request_time_best_case,
+            "hospitalBedByRequestedTime": hospital_bed_by_requested_time_best_case
         },
         "severeImpact": {
             "currentlyInfected": currently_infected_worst_case,
             "infectionsByRequestedTime": infections_by_request_time_worst_case,
+            "hospitalBedByRequestedTime": hospital_bed_by_requested_time_worst_case
         },
     }
     return final_data
