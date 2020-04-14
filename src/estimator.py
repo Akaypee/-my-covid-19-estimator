@@ -1,9 +1,9 @@
 def estimator(data):
     
-    periodType = data["periodType"]
+    period_type = data["periodType"]
     period = data["timeToElapse"]
 
-    no_of_days = normalize_period_to_days(periodType, period)
+    no_of_days = normalize_period_to_days(period_type, period)
     factor = no_of_days / 3
 
     reported_cases = data["reportedCases"]
@@ -33,9 +33,9 @@ def estimator(data):
     return final_data
 
 
-def normalize_period_to_days(periodType, period):
-    return period if periodType == "days" else period * 7 \
-        if periodType == "weeks" else period * 30
+def normalize_period_to_days(period_type, period):
+    return period if period_type == "days" else period * 7 \
+        if period_type == "weeks" else period * 30
 
 
 if __name__ == "__main__":
