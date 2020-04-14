@@ -42,13 +42,13 @@ def estimator(data):
         "data": data,
         "impact": {
             "currentlyInfected": currently_infected_best_case,
-            "infectionsByRequestTime": infections_by_request_time_best_case,
+            "infectionsByRequestedTime": infections_by_request_time_best_case,
             "severeCasesByRequestedTime": severe_cases_by_requested_time_best_case,
             "hospitalBedsByRequestedTime": hospital_bed_by_requested_time_best_case,
         },
         "severeImpact": {
             "currentlyInfected": currently_infected_worst_case,
-            "infectionsByRequestTime": infections_by_request_time_worst_case,
+            "infectionsByRequestedTime": infections_by_request_time_worst_case,
             "severeCasesByRequestedTime": severe_cases_by_requested_time_worst_case,
             "hospitalBedsByRequestedTime": hospital_bed_by_requested_time_worst_case,
         },
