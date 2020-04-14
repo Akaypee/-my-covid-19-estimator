@@ -1,5 +1,7 @@
 def estimator(data):
-    
+    avg_daily_income_in_usd = data["region"]["avgDailyIncomeInUSD"]
+    avg_daily_income_population = data["region"]["avgDailyIncomePopulation"]
+
     period_type = data["periodType"]
     period = data["timeToElapse"]
 
@@ -19,7 +21,7 @@ def estimator(data):
         currently_infected_worst_case * (2 ** factor)
 
     # Challenge One Ends
-    
+
     # Challenge Two Starts
     severe_cases_by_requested_time_best_case = \
         infections_by_request_time_best_case * 15 / 100
@@ -38,21 +40,49 @@ def estimator(data):
         severe_cases_by_requested_time_worst_case
     # Challenge Two Ends
 
-    
+    # Challenge Three Starts
+    cases_for_icu_by_requested_time_best_case = \
+        infections_by_request_time_best_case * 5 / 100  # 5% of infectionsByRequestedTime
+    cases_for_ventilators_by_requested_time_best_case = \
+        infections_by_request_time_best_case * 2 / 100  # 2% of infectionsByRequestedTime
+    dollars_in_flight_best_case = \
+        infections_by_request_time_best_case * avg_daily_income_population * \
+        avg_daily_income_in_usd * no_of_days
+
+    cases_for_icu_by_requested_time_worst_case = \
+        infections_by_request_time_worst_case * 5 / 100  # 5% of infectionsByRequestedTime
+    cases_for_ventilators_by_requested_time_worst_case = \
+        infections_by_request_time_worst_case * 2 / 100  # 2% of infectionsByRequestedTime
+    dollars_in_flight_worst_case = \
+        infections_by_request_time_worst_case * avg_daily_income_population * \
+        avg_daily_income_in_usd * no_of_days
+    # Challenge Three Ends
+
     # Estimation result
     final_data = {
         "data": data,
         "impact": {
             "currentlyInfected": currently_infected_best_case,
-            "infectionsByRequestedTime": infections_by_request_time_best_case,
+            "infectionsByRequestTime": infections_by_request_time_best_case,
             "hospitalBedByRequestedTime": hospital_bed_by_requested_time_best_case,
+            "casesForICUByRequestedTime":
+                cases_for_icu_by_requested_time_best_case,
+            "casesForVentilatorsByRequestedTime":
+                cases_for_ventilators_by_requested_time_best_case,
+            "dollarsInFlight": dollars_in_flight_best_case,
         },
         "severeImpact": {
             "currentlyInfected": currently_infected_worst_case,
-            "infectionsByRequestedTime": infections_by_request_time_worst_case,
+            "infectionsByRequestTime": infections_by_request_time_worst_case,
             "hospitalBedByRequestedTime": hospital_bed_by_requested_time_worst_case,
+            "casesForICUByRequestedTime":
+                cases_for_icu_by_requested_time_worst_case,
+            "casesForVentilatorsByRequestedTime":
+                cases_for_ventilators_by_requested_time_worst_case,
+            "dollarsInFlight": dollars_in_flight_worst_case,
         },
     }
+
     return final_data
 
 
@@ -66,11 +96,11 @@ if __name__ == "__main__":
         "region": {
             "name": "Africa",
             "avgAge": 19.7,
-            "avgDailyIncomeIUSD": 5,
+            "avgDailyIncomeInUSD": 5,
             "avgDailyIncomePopulation": 0.71
         },
         "periodType": "days",
-        "timeToTlapse": 58,
+        "timeToElapse": 58,
         "reportedCases": 674,
         "population": 66622705,
         "totalHospitalBeds": 1380614
