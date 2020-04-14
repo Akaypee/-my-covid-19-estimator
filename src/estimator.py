@@ -25,7 +25,7 @@ def estimator(data):
             "currentlyInfected": currently_infected_best_case,
             "infectionsByRequestTime": infections_by_request_time_best_case,
         },
-        "severe_impact": {
+        "severeImpact": {
             "currentlyInfected": currently_infected_worst_case,
             "infectionsByRequestTime": infections_by_request_time_worst_case,
         },
